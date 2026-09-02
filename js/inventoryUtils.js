@@ -1,1 +1,67 @@
-export function searchProducts(p,q){return p.filter(x=>x.name.toLowerCase().includes(q.toLowerCase()))}export function filterProductsByCategory(p,c){return c==='All'?p:p.filter(x=>x.category===c)}export function getStockStatus(s){if(s===0)return'Out of Stock';if(s<=5)return'Low Stock';return'In Stock'}export function calculateTotalInventoryValue(p){return p.reduce((t,x)=>t+x.price*x.stock,0)}export function countLowStockProducts(p){return p.filter(x=>x.stock>=1&&x.stock<=5).length}export function countOutOfStockProducts(p){return p.filter(x=>x.stock===0).length}
+export function searchProducts(products, query){
+
+    return products.filter(product =>
+
+        product.name
+        .toLowerCase()
+        .includes(query.toLowerCase())
+
+    );
+
+}
+
+export function filterProductsByCategory(products, category){
+
+    if(category === "All"){
+        return products;
+    }
+
+    return products.filter(product => product.category === category);
+
+}
+
+export function getStockStatus(stock){
+
+    if(stock === 0){
+        return "Out of Stock";
+    }
+
+    if(stock <= 5){
+        return "Low Stock";
+    }
+
+    return "In Stock";
+
+}
+
+export function calculateTotalInventoryValue(products){
+
+    return products.reduce(
+
+        (total, product) => total + (product.price * product.stock),
+
+        0
+
+    );
+
+}
+
+export function countLowStockProducts(products){
+
+    return products.filter(
+
+        product => product.stock >= 1 && product.stock <= 5
+
+    ).length;
+
+}
+
+export function countOutOfStockProducts(products){
+
+    return products.filter(
+
+        product => product.stock === 0
+
+    ).length;
+
+}
